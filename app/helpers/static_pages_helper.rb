@@ -12,7 +12,8 @@ module StaticPagesHelper
 
     results = JSON.parse(results.body)
 
-    results['result']['kits']['0'][0]['0']
+    kit = results['result']['kits']['0'][0]['0']
+    find_weapon_name(kit)
   end
 
   def weapons
@@ -33,11 +34,17 @@ module StaticPagesHelper
       result['weapons'].each do |weapon|
         name = weapon['name']
         id = weapon['guid']
-        weapon_array[name] = id
+        weapon_array[id] = name
       end
     end
 
     weapon_array
 
   end
+
+  def find_weapon_name(weapon_id)
+    weapon_array = weapons
+    weapon_array[weapon_id.downcase]
+  end
+
 end
