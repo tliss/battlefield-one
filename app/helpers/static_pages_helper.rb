@@ -1,7 +1,7 @@
 module StaticPagesHelper
 
-  def player_kit
-    player_kits = retrieve_player_kits('samort7')
+  def player_kit(username)
+    player_kits = retrieve_player_kits(username)
     weapon_list = create_weapon_list
 
     readable_kit_list = []
@@ -50,8 +50,9 @@ module StaticPagesHelper
       weapon_array[item_id] = item_name
     end
 
-    # Add missing Hellfighter 1911
+    # Add missing weapons
     weapon_array['AF3F421B-F68B-401D-94B4-B982EE6C8A91'] = 'Hellfighter 1911'
+    weapon_array['B97A8C29-A567-437F-9B6C-9E1E8FD86BF9'] = 'Red Baron\'s P08'
     weapon_array
   end
 

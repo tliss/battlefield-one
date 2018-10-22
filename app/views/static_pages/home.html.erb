@@ -4,6 +4,8 @@
   Find your kit here!
 </h2>
 
-<%= @result.each do |kit| %>
-  <h2><%= kit %></h2>
+<%= form_tag("/results", method: "get") do %>
+  <%= label_tag(:username, "Search for:") %>
+  <%= text_field_tag(:username) %>
+  <%= submit_tag("Search") %>
 <% end %>

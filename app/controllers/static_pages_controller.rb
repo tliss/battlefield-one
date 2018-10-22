@@ -1,10 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
-
-    @result = helpers.player_kit
-
   end
 
   def results
+    @result = helpers.player_kit(params[:username])
   end
 end
