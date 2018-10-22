@@ -47,6 +47,9 @@ module StaticPagesHelper
       item_name = value['name']
       weapon_array[item_id] = item_name
     end
+
+    # Add missing Hellfighter 1911
+    weapon_array['AF3F421B-F68B-401D-94B4-B982EE6C8A91'] = 'Hellfighter 1911'
     weapon_array
   end
 
