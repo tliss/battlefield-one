@@ -1,9 +1,9 @@
 module StaticPagesHelper
 
-  def player_kit(username)
-    player_kits = retrieve_player_kits(username)
+  def player_kit(player)
+    player_kits = retrieve_player_kits(player)
     if player_kits['successful'] == false
-      return "An error has occured"
+      return ['User either doesn\'t exist or has no BattleField 1 data']
     end
     weapon_list = create_weapon_list
 
