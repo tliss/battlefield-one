@@ -8,8 +8,10 @@ module StaticPagesHelper
     player_kits['result']['kits'].each_value do |kit|
       unless kit[0].empty?
         readable_kit = []
-        kit[0].each_value do |weapon_id|
-          readable_kit.push(find_weapon_name(weapon_id, weapon_list))
+        kit[0].each do |slot, weapon_id|
+          unless slot == 'name'
+            readable_kit.push(find_weapon_name(weapon_id, weapon_list))
+          end
         end
         readable_kit_list.push(readable_kit)
       end
