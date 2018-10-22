@@ -12,12 +12,27 @@ module StaticPagesHelper
 
     results = JSON.parse(results.body)
 
-    kit = results['result']['kits']['0'][0]['0']
-    find_weapon_name(kit)
+    weapon_list = create_weapon_list('samort7')
+
+    final = []
+    # kit = results['result']['kits']['0'][0]['0']
+    results['result']['kits'].each do |key, value|
+
+      unless value[0].empty?
+        kit = []
+        value[0].each_value do |weapon_id|
+          kit.push(find_weapon_name(weapon_id, weapon_list))
+        end
+        final.push(kit)
+      end
+
+    end
+
+    final
   end
 
-  def weapons
-    query = { platform: 3, displayName: 'samort7'}
+  def create_weapon_list(display_name)
+    query = { platform: 3, displayName: (display_name)}
     headers["TRN-Api-Key"] = Rails.application.credentials.trn_api_key
 
     results = HTTParty.post(
@@ -42,9 +57,12 @@ module StaticPagesHelper
 
   end
 
-  def find_weapon_name(weapon_id)
-    weapon_array = weapons
-    weapon_array[weapon_id.downcase]
+  def find_weapon_name(weapon_id, weapon_list)
+    if weapon_list.key?(weapon_id.downcase)
+      weapon_list[weapon_id.downcase]
+    else
+      weapon_id
+    end
   end
 
 end
