@@ -2,6 +2,9 @@ module StaticPagesHelper
 
   def player_kit(username)
     player_kits = retrieve_player_kits(username)
+    if player_kits['successful'] == false
+      return "An error has occured"
+    end
     weapon_list = create_weapon_list
 
     readable_kit_list = []
