@@ -2,9 +2,8 @@ module StaticPagesHelper
 
   def player_kit(player)
     player_kits = retrieve_player_kits(player)
-    if player_kits['successful'] == false
-      return ['User either doesn\'t exist or has no BattleField 1 data']
-    end
+    return ['User either doesn\'t exist or has no BattleField 1 data'] unless player_kits['successful']
+
     weapon_list = create_weapon_list
 
     readable_kit_list = []
@@ -13,7 +12,7 @@ module StaticPagesHelper
         readable_kit = []
         kit[0].each do |slot, weapon_id|
           unless slot == 'name'
-            readable_kit.push(find_weapon_name(weapon_id, weapon_list))
+            readable_kit.push([slot, find_weapon_name(weapon_id, weapon_list), weapon_id] )
           end
         end
         readable_kit_list.push(readable_kit)
