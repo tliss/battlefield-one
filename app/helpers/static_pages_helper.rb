@@ -15,9 +15,7 @@ module StaticPagesHelper
     weapon_list = create_weapon_list('samort7')
 
     final = []
-    # kit = results['result']['kits']['0'][0]['0']
     results['result']['kits'].each do |key, value|
-
       unless value[0].empty?
         kit = []
         value[0].each_value do |weapon_id|
@@ -25,7 +23,6 @@ module StaticPagesHelper
         end
         final.push(kit)
       end
-
     end
 
     final
