@@ -1,6 +1,10 @@
 <% provide(:title, "Results") %>
 <h1>Battle Kitten</h1>
 
-<%= @result.each do |kit| %>
-  <h2><%= kit %></h2>
+<% @result.each do |loadout| %>
+  <div class="loadout">
+  <% loadout.each do |item| %>
+    <%= image_tag item[2] %>
+  <% end %>
+  </div>
 <% end %>
