@@ -1,6 +1,8 @@
 module StaticPagesHelper
 
   def player_kit(player)
+    image_source = 'https://eaassets-a.akamaihd.net/battlelog/battlebinary'
+
     player_kits = retrieve_player_kits(player)
     return ['User either doesn\'t exist or has no BattleField 1 data'] unless player_kits['successful']
 
@@ -49,10 +51,13 @@ module StaticPagesHelper
 
     results['result'].each do |item_id, value|
       item_name = value['name']
-      weapon_array[item_id] = item_name
+      item_image = value['images']['small']
+      weapon_array[item_id] = [item_name, item_image]
+      # TODO: CHANGE PLAYERS_KIT METHOD TO ACCESS ARRAYS INSTEAD OF SINGLE VARIABLE
     end
 
     # Add missing weapons
+    # TODO: ADD IMAGES FOR THESE ITEMS
     weapon_array['AF3F421B-F68B-401D-94B4-B982EE6C8A91'] = 'Hellfighter 1911'
     weapon_array['B97A8C29-A567-437F-9B6C-9E1E8FD86BF9'] = 'Red Baron\'s P08'
     weapon_array
