@@ -17,6 +17,7 @@ module StaticPagesHelper
             readable_kit.push([slot, item_name, item_image] )
           end
         end
+        readable_kit.sort! { |a,b| a[0] <=> b[0] }
         kit_name = find_kit_name(kit_num)
         readable_kit.push(kit_name)
         readable_kit_list.push(readable_kit)
