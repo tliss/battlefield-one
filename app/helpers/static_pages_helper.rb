@@ -9,21 +9,26 @@ module StaticPagesHelper
     readable_kit_list = []
     player_kits['result']['kits'].each do |kit_num, kit|
       unless kit[0].empty?
-        readable_kit = []
+        updated_item_list = []
         kit[0].each do |slot, item_id|
           unless slot == 'name'
-            item_name = find_item_name(item_id, item_list)
-            item_image = find_item_image(item_id, item_list)
-            readable_kit.push([slot, item_name, item_image] )
+            item = {
+                name: find_item_name(item_id, item_list),
+                image: find_item_image(item_id, item_list),
+                slot: slot
+            }
+            updated_item_list.push(item)
           end
         end
-        readable_kit.sort! { |a,b| a[0] <=> b[0] }
-        kit_name = find_kit_name(kit_num)
-        readable_kit.push(kit_name)
+        readable_kit = {
+            item_list: updated_item_list.sort_by! { |h| h[:slot].to_i },
+            kit_num: kit_num,
+            kit_name: find_kit_name(kit_num)
+        }
         readable_kit_list.push(readable_kit)
       end
     end
-    readable_kit_list
+    readable_kit_list.sort_by! { |h| h[:kit_num].to_i }
   end
 
   def retrieve_player_kits(player)
