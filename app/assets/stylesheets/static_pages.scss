@@ -1,3 +1,15 @@
 // Place all the styles related to the static_pages controller here.
-// They will automatically be included in application.css.
+// They will automatically be included in application.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.card-row-border {
+  border: 3px solid #3F4240 !important;
+}
+
+.card-row:first-child {
+  padding-left: 0 !important;
+}
+
+.card-row:last-child {
+  padding-right: 0 !important;
+}

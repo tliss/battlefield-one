@@ -2,9 +2,18 @@
 <h1>Battle Kitten</h1>
 
 <% @result.each do |loadout| %>
-  <div class="loadout">
-  <% loadout.each do |item| %>
-    <%= image_tag item[2] %>
-  <% end %>
+  <div class="row border rounded m-2 p-1 card-row-border">
+    <% loadout.each do |item| %>
+    <div class="col-sm-2 card-row">
+      <div class="card h-100">
+        <div class="card-header">
+          <%= item[1] %>
+        </div>
+        <div class="card-body">
+          <%= image_tag item[2], class: 'card-img'%>
+        </div>
+      </div>
+    </div>
+    <% end %>
   </div>
 <% end %>
