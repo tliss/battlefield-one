@@ -2,8 +2,9 @@
 <h1>Battle Kitten</h1>
 
 <% @result.each do |loadout| %>
+  <h2><%= loadout.last %></h2>
   <div class="row border rounded m-2 p-1 card-row-border">
-    <% loadout.each do |item| %>
+    <% loadout[0...-1].each do |item| %>
     <div class="col-sm-2 card-row">
       <div class="card h-100">
         <div class="card-header">

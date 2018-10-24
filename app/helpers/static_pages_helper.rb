@@ -7,14 +7,18 @@ module StaticPagesHelper
     item_list = retrieve_item_list
 
     readable_kit_list = []
-    player_kits['result']['kits'].each_value do |kit|
+    player_kits['result']['kits'].each do |kit_num, kit|
       unless kit[0].empty?
         readable_kit = []
         kit[0].each do |slot, item_id|
           unless slot == 'name'
-            readable_kit.push([slot, find_item_name(item_id, item_list), find_item_image(item_id, item_list)] )
+            item_name = find_item_name(item_id, item_list)
+            item_image = find_item_image(item_id, item_list)
+            readable_kit.push([slot, item_name, item_image] )
           end
         end
+        kit_name = find_kit_name(kit_num)
+        readable_kit.push(kit_name)
         readable_kit_list.push(readable_kit)
       end
     end
@@ -74,6 +78,31 @@ module StaticPagesHelper
       item_list[item_id][:item_image]
     else
       item_id
+    end
+  end
+
+  def find_kit_name(kit_num)
+    case kit_num
+    when '0'
+      'Assault'
+    when '1'
+      'Medic'
+    when '2'
+      'Support'
+    when '3'
+      'Scout'
+    when '13'
+      'Attack Plane'
+    when '15'
+      'Artillery Truck'
+    when '16'
+      'Bomber'
+    when '18'
+      'Fighter'
+    when '19'
+      'Horse'
+    when '21'
+      'Heavy Bomber'
     end
   end
 
