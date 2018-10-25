@@ -5,7 +5,7 @@
 </h2>
 
 <%= form_tag("/results", method: "get") do %>
-  <%= label_tag(:username, "Search for:") %>
-  <%= text_field_tag(:username) %>
+  <%= label_tag(:origin_search_id, "Search for:") %>
+  <%= text_field_tag(:origin_search_id) %>
   <%= submit_tag("Search") %>
 <% end %>

@@ -1,34 +1,25 @@
 module StaticPagesHelper
 
-  def player_kit(player)
-    player_kits = retrieve_player_kits(player)
+  def player_kit(origin_search_user)
+    player_kits = retrieve_player_kits(origin_search_user)
     return ['User either doesn\'t exist or has no BattleField 1 data'] unless player_kits['successful']
 
     item_list = retrieve_item_list
 
-    readable_kit_list = []
+    kl = KitList.new(origin_user: origin_search_user)
+
     player_kits['result']['kits'].each do |kit_num, kit|
       unless kit[0].empty?
-        updated_item_list = []
+        k = kl.kits.new(number: kit_num, name: find_kit_name(kit_num))
         kit[0].each do |slot, item_id|
           unless slot == 'name'
-            item = {
-                name: find_item_name(item_id, item_list),
-                image: find_item_image(item_id, item_list),
-                slot: slot
-            }
-            updated_item_list.push(item)
+            k.items.create(name: find_item_name(item_id, item_list), image: find_item_image(item_id, item_list), slot: slot)
           end
         end
-        readable_kit = {
-            item_list: updated_item_list.sort_by! { |h| h[:slot].to_i },
-            kit_num: kit_num,
-            kit_name: find_kit_name(kit_num)
-        }
-        readable_kit_list.push(readable_kit)
+        k.save
       end
     end
-    readable_kit_list.sort_by! { |h| h[:kit_num].to_i }
+    kl.save
   end
 
   def retrieve_player_kits(player)
