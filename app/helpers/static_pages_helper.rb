@@ -6,20 +6,18 @@ module StaticPagesHelper
 
     item_list = retrieve_item_list
 
-    kl = KitList.new(origin_user: origin_search_user)
+    kl = KitList.create(origin_user: origin_search_user)
 
     player_kits['result']['kits'].each do |kit_num, kit|
       unless kit[0].empty?
-        k = kl.kits.new(number: kit_num, name: find_kit_name(kit_num))
+        k = kl.kits.create(number: kit_num, name: find_kit_name(kit_num))
         kit[0].each do |slot, item_id|
           unless slot == 'name'
             k.items.create(name: find_item_name(item_id, item_list), image: find_item_image(item_id, item_list), slot: slot)
           end
         end
-        k.save
       end
     end
-    kl.save
   end
 
   def retrieve_player_kits(player)

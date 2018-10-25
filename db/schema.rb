@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2018_10_25_180640) do
   end
 
   create_table "kit_lists", force: :cascade do |t|
+    t.string "origin_user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
