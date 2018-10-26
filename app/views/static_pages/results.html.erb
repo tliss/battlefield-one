@@ -1,5 +1,5 @@
 <% provide(:title, "Results") %>
-<h1>Battle Kitten</h1>
+<h1><%= @result.origin_user %></h1>
 
 <% @result.kits.each do |loadout| %>
   <h2><%= loadout.name %></h2>
