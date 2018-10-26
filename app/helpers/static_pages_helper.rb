@@ -72,7 +72,7 @@ module StaticPagesHelper
     if item_list.key?(item_id)
       item_list[item_id][:item_image]
     else
-      item_id
+      'https://image.shutterstock.com/image-photo/red-bunny-rabbit-portrait-looking-260nw-589399619.jpg'
     end
   end
 
