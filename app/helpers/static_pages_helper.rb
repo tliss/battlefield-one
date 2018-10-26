@@ -1,6 +1,6 @@
 module StaticPagesHelper
 
-  def player_kit(origin_search_user)
+  def add_player_kit(origin_search_user)
     player_kits = retrieve_player_kits(origin_search_user)
     return ['User either doesn\'t exist or has no BattleField 1 data'] unless player_kits['successful']
 
