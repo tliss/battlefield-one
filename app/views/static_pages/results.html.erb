@@ -1,17 +1,17 @@
 <% provide(:title, "Results") %>
 <h1>Battle Kitten</h1>
 
-<% @result.each do |loadout| %>
-  <h2><%= loadout[:kit_name] %></h2>
+<% @result.kits.each do |loadout| %>
+  <h2><%= loadout.name %></h2>
   <div class="row border rounded m-2 p-1 card-row-border">
-    <% loadout[:item_list].each do |item| %>
+    <% loadout.items.each do |item| %>
     <div class="col-sm-2 card-row">
       <div class="card h-100">
         <div class="card-header">
-          <%= item[:name] %>
+          <%= item.name %>
         </div>
         <div class="card-body">
-          <%= image_tag item[:image], class: 'card-img'%>
+          <%= image_tag item.image, class: 'card-img'%>
         </div>
       </div>
     </div>

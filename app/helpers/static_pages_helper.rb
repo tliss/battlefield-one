@@ -86,6 +86,8 @@ module StaticPagesHelper
       'Support'
     when '3'
       'Scout'
+    when '12'
+      'Airship'
     when '13'
       'Attack Plane'
     when '15'
@@ -98,6 +100,8 @@ module StaticPagesHelper
       'Horse'
     when '21'
       'Heavy Bomber'
+    when '24'
+      'Landship'
     else
       kit_num
     end
