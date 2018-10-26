@@ -11,9 +11,8 @@
  * It is generally better to create a new file per style scope.
 */
 
-//$body-color: #ABB5B0;
 $body-bg: #ABB5B0;
 $card-bg: #51505C;
 
-@import 'bootstrap';
-@import 'static_pages';
+// Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "bootstrap";
