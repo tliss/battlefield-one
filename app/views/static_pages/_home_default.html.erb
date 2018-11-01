@@ -1,0 +1,10 @@
+<% provide(:title, "Home") %>
+<h1>battle kitten</h1>
+<h2>
+  Find your kit here!
+</h2>
+
+<%= form_tag("/results", method: "get") do %>
+  <%= text_field_tag(:origin_search_user) %>
+  <%= submit_tag("Search") %>
+<% end %>
