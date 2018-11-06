@@ -1,6 +1,15 @@
 <% provide(:title, "Results") %>
 <h1><%= @result.origin_user %></h1>
 
+<% if user_signed_in? %>
+  <div class="favorite">&#x2665;</div>
+<% end %>
+
+<%= form_for(current_user.kit_lists, remote: true) do |f| %>
+  <div><%= hidden_field_tag :followed_id, @user.id %></div>
+  <%= f.submit "Follow", class: "btn btn-primary" %>
+<% end %>
+
 <% @result.kits.each do |loadout| %>
   <h2><%= loadout.name %></h2>
   <div class="row border rounded m-2 p-1 card-row-border">

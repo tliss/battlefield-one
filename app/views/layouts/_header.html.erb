@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-dark">
   <%= link_to "battle kitten", root_path, id: "logo", class: "navbar-brand" %>
-  <%= current_user.inspect %>
+
   <%= link_to "Log In",   new_user_session_path %>
   <%= link_to "Sign Up",   new_user_registration_path %>
   <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
