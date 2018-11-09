@@ -9,7 +9,6 @@ class KitListsController < ApplicationController
   end
 
   def show
-    # @result = KitList.find_by(origin_user: params[:id])
     @result = KitList.find_by_id(params[:id])
     @klu = KitListUser.new
   end
