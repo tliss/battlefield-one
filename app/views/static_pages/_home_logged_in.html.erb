@@ -5,7 +5,10 @@
   Find your kit here!
 </h2>
 
-<%= form_tag("/results", method: "get") do %>
-  <%= text_field_tag(:origin_search_user) %>
-  <%= submit_tag("Search") %>
+<%= render 'static_pages/search' %>
+
+<h2>Favorite Kits</h2>
+<%= current_user.kit_lists.count %>
+<% current_user.kit_lists.each do |kl| %>
+  <h3><%= kl.origin_user %></h3>
 <% end %>
