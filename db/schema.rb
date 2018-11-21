@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 2018_11_02_200655) do
     t.integer "kit_list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["kit_list_id"], name: "index_kit_list_users_on_kit_list_id"
+    t.index ["user_id", "kit_list_id"], name: "index_kit_list_users_on_user_id_and_kit_list_id", unique: true
+    t.index ["user_id"], name: "index_kit_list_users_on_user_id"
   end
 
   create_table "kit_lists", force: :cascade do |t|

@@ -6,5 +6,8 @@ class CreateKitListUsers < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :kit_list_users, :user_id
+    add_index :kit_list_users, :kit_list_id
+    add_index :kit_list_users, [:user_id, :kit_list_id], unique: true
   end
 end
