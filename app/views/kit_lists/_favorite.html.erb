@@ -1,7 +1,5 @@
-<% unless current_user.kit_list_users.find_by(user_id: current_user.id, kit_list_id: @result.id) %>
-  <%= form_for(@klu, remote: true) do |f| %>
-    <%= hidden_field_tag :kit_list_id, @result.id %>
-    <%= hidden_field_tag :user_id, current_user.id %>
-    <%= f.submit "\u2665", class: "btn btn-primary" %>
-  <% end %>
+<%= form_for(@klu, remote: true) do |f| %>
+  <%= hidden_field_tag :kit_list_id, @result.id %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= f.submit "\u2665", class: "btn btn-primary" %>
 <% end %>

@@ -1,0 +1,5 @@
+<%= form_for(@klu, :url => { :action => "destroy" }, :html => { :method => :delete }, remote: true) do |f| %>
+  <%= hidden_field_tag :kit_list_id, @result.id %>
+  <%= hidden_field_tag :user_id, current_user.id %>
+  <%= f.submit "X", class: "btn btn-primary" %>
+<% end %>

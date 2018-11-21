@@ -1,7 +1,14 @@
 <% provide(:title, "Results") %>
 <h1><%= @result.origin_user %></h1>
 
-<%= render 'kit_lists/favorite' %>
+<div id="favorite">
+  <% if current_user.kit_list_users.find_by(user_id: current_user.id, kit_list_id: @result.id) %>
+    <%= render 'kit_lists/unfavorite' %>
+  <% else %>
+    <%= render 'kit_lists/favorite' %>
+  <% end %>
+</div>
+
 
 <% @result.kits.each do |loadout| %>
   <h2><%= loadout.name %></h2>
