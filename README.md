@@ -1,24 +1,6 @@
-# README
+This is a program to see the kits of users in the game Battlefield 1. It uses the API created by https://trnbattlefield.docs.apiary.io/# to access user data and creates a visual representation of a player's loadout for all classes and vehicles.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Currently a work-in-progress, developed to help me learn development in Ruby on Rails.
 
-Things you may want to cover:
+Live version of program can be found at https://tliss-battlekitten.herokuapp.com/kit_lists/1
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
